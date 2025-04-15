@@ -17,14 +17,14 @@ Optional, includes creation and implementation of an Api Response Class.
 
 - Require the package using composer.
 ```bash
-    composer require dev-danno/laravel-repository-pattern --dev
+composer require dev-danno/laravel-repository-pattern --dev
 ```
 
 - Laravel uses Auto-Discovery, so it doesn't require to manually add the ServiceProvider.
 
 - Publish the config file
 ```php
-    php artisan vendor:publish --tag=repository-pattern-config
+php artisan vendor:publish --tag=repository-pattern-config
 ```
 
 ## Usage 🧰
@@ -34,29 +34,29 @@ Optional, includes creation and implementation of an Api Response Class.
 
 - Api Response Class
 ```php
-    php artisan make:response
+php artisan make:response
 ```
 
 - Interface with resources
 ```php
-    php artisan make:interface
+php artisan make:interface
 ```
 
 - Interface with resources, Repository class with resources and the corresponding binding.
 ```php
-    php artisan make:interface --repository
+php artisan make:interface --repository
 ```
 
 - Model with base structure
 ```php
-    php artisan make:model
+php artisan make:model
 ```
 
 - Model, Interface & Repository with resources, Service & Controller class with resources and Dependency Injection.
 > [!NOTE]
 > If `ApiResponseHelper` class exists, the controllers will include it in the responses.
 ```php
-    php artisan make:model --csir
+php artisan make:model --csir
 ```
 
 
