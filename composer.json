@@ -1,0 +1,36 @@
+{
+    "name": "dev-danno/laravel-repository-pattern",
+    "description": "Laravel Package to use the repository pattern with simple commands.",
+    "license": "MIT",
+    "version": "1.0.0",
+    "keywords": [
+        "dev-danno",
+        "php",
+        "laravel",
+        "repository-pattern"
+    ],
+    "type": "library",
+    "require": {
+        "php": ">=8.0",
+        "laravel/framework": ">=9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DevDanno\\LaravelRepositoryPattern\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jcb",
+            "role": "Software Enginneer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+      "laravel": {
+        "providers": [
+          "DevDanno\\LaravelRepositoryPattern\\LRepositoryPatternServiceProvider"
+        ]
+      }
+    }
+}

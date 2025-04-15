@@ -1,0 +1,64 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\Controllers\Controller;
+use {{ serviceNamespace }}\{{ class }}Service;
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+{{ apiHelperImport }}
+
+/**
+ * Controller {{ class }}Controller
+ * @package App\Http\Controllers
+ */
+
+class {{ class }}Controller extends Controller
+{
+    private {{ class }}Service $service;
+    public function __construct({{ class }}Service $service) {
+        $this->service = $service;
+    }
+
+    public function index()
+    {
+        try {
+            $data = $this->service->all();
+            {{ apiHelperReturn }}
+        } {{ exceptionOnlyBlock }}
+    }
+
+    public function show($id)
+    {
+        try {
+            $find = $this->service->show($id);
+            {{ apiFindReturn }}
+        } {{ exceptionsBlock }}
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            $data = $request->all();
+            $saved = $this->service->store($data);
+            {{ apiSavedReturn }}
+        } {{ exceptionOnlyBlock }}
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $data = $request->all();
+            $updated = $this->service->update($id, $data);
+            {{ apiUpdatedReturn }}
+        } {{ exceptionOnlyBlock }}
+    }
+
+    public function destroy($id)
+    {
+        try{
+            $deleted = $this->service->delete($id);
+            {{ apiDeleteReturn }}
+        } {{ exceptionsBlock }}
+    }
+}

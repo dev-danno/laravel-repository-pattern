@@ -1,0 +1,74 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ interfaceNamespace }}\{{ class }}Interface;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
+/**
+ * Service {{ class }}Service
+ * @package App\Services
+ */
+
+class {{ class }}Service
+{
+    private {{ class }}Interface $dao;
+    public function __construct({{ class }}Interface $dao) {
+        $this->dao = $dao;
+    }
+
+    public function all()
+    {
+        return $this->dao->all();
+    }
+
+    public function show($id)
+    {
+        return $this->dao->findById($id);
+    }
+
+    public function store(array $data)
+    {
+        DB::beginTransaction();
+        try {
+            $save = $this->dao->save($data);
+            DB::commit();
+            return $save;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::info($e);
+        }
+    }
+
+    public function update($id, array $data)
+    {
+        DB::beginTransaction();
+        try {
+            $updated = $this->dao->update($id, $data);
+            DB::commit();
+            return $updated;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::info($e);
+        }
+    }
+
+    public function delete($id)
+    {
+        DB::beginTransaction();
+        try{
+            $this->dao->findById($id);
+            $deleted = $this->dao->delete($id);
+            DB::commit();
+            return $deleted;
+        } catch (ModelNotFoundException $e) {
+            DB::rollBack();
+            Log::info($e);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::info($e);
+        }
+    }
+}

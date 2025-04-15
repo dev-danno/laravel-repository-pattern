@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ namespace }};
+
+/**
+ * Interface {{ class }}Interface
+ * @package App\Interfaces
+ */
+
+interface {{ class }}Interface
+{
+    public function all();
+    public function findById($id);
+    public function save(array $data);
+    public function update($id, array $data);
+    public function delete($id);
+}
