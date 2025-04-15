@@ -38,7 +38,6 @@ Optional, includes creation and implementation of an Api Response Class.
 ```
 
 - Interface with resources
-
 ```php
     php artisan make:interface
 ```
