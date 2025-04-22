@@ -1,6 +1,6 @@
 {
     "name": "dev-danno/laravel-repository-pattern",
-    "description": "Laravel Package to use the repository pattern with simple commands.",
+    "description": "Repository pattern implementation with simple commands in your Laravel application.",
     "license": "MIT",
     "version": "1.0.0",
     "keywords": [
